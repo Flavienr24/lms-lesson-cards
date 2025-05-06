@@ -1,0 +1,389 @@
+/* Global Styles */
+:root {
+    /* Colors from specs */
+    --white: #FFFFFF;
+    --black: #000000;
+    --tangerine: #D54233;
+    --grey: #868686;
+    --blue: #24226A;
+    --light-grey: #F7F7FD;
+    --validated-bg: #EBEBF9;
+    --stroke-color: #BDBDDF;
+}
+
+.topic-item[data-state="ready-to-play"] .topic-title {
+    color: var(--tangerine);
+    font-weight: 600;
+}
+
+.topic-icon.check,
+.topic-icon.play-circle {
+    position: absolute;
+    left: 0;
+}
+
+.lesson-card[data-state="default"] .lesson-title {
+    color: var(--black);
+    font-weight: normal;
+}
+
+.topic-item[data-state="ready-to-play"] {
+    gap: 20px;
+}
+
+.topic-item:hover {
+    gap: 20px;
+}
+
+.lesson-check i,
+.topic-icon.check i,
+.dropdown-icon i {
+    font-size: 13px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f5f5;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+h1 {
+    margin-bottom: 30px;
+    color: #333;
+}
+
+/* Lesson Card Styles */
+.lessons-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.lesson-card {
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--stroke-color);
+    transition: box-shadow 0.3s ease; /* Transition pour l'ombre */
+}
+
+/* Effet de hover pour les cartes en mode click */
+body[data-open-mode="click"] .lesson-card:hover {
+    box-shadow: 0px 4px 10px 0px rgba(189, 189, 223, 0.50);
+}
+
+/* Specific styles for validated lesson */
+.lesson-card[data-state="validated"] {
+    background-color: var(--validated-bg);
+}
+
+.lesson-card[data-state="default-open"],
+.lesson-card[data-state="validated-open"],
+.lesson-card[data-state="open"],
+.lesson-card[data-state="ready-to-play"][data-has-topics="true"] {
+    background-color: var(--light-grey);
+}
+
+.lesson-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    cursor: pointer;
+    position: relative;
+    height: 56px; /* Based on Image 2 */
+}
+
+.lesson-title-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: gap 0.3s ease;
+}
+
+/* Lesson title styling */
+.lesson-title {
+    font-size: 14px;
+    line-height: 18px;
+    transition: all 0.3s ease;
+}
+
+/* Different title styles based on lesson state */
+.lesson-card[data-state="ready-to-play"][data-has-topics="true"] .lesson-title,
+.lesson-card[data-state="default-open"][data-has-topics="true"] .lesson-title,
+.lesson-card[data-state="open"][data-has-topics="true"] .lesson-title {
+    color: var(--black);
+    font-weight: normal;
+}
+
+.lesson-card[data-state="ready-to-play"]:not([data-has-topics="true"]) .lesson-title {
+    color: var(--tangerine);
+    font-weight: 600;
+}
+
+.lesson-card[data-state="inactive"] .lesson-title {
+    color: var(--grey);
+    font-weight: normal;
+}
+
+.lesson-card[data-state="validated"] .lesson-title,
+.lesson-card[data-state="validated-open"] .lesson-title {
+    color: var(--blue);
+    font-weight: 600;
+}
+
+/* Play icon for ready-to-play state */
+.lesson-icon.play-circle {
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    border: 1px solid var(--tangerine);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lesson-icon.play-circle i {
+    color: var(--tangerine);
+    font-size: 9.17px;
+}
+
+/* Check icon for validated lessons */
+.lesson-check {
+    width: 20px;
+    height: 20px;
+    background-color: var(--blue);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+/* Topic check icon */
+.topic-icon.check {
+    width: 20px;
+    height: 20px;
+    background-color: var(--blue);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+/* Topic play icon */
+.topic-icon.play-circle {
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    border: 1px solid var(--tangerine);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Right side elements for lessons with topics */
+.lesson-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.topics-count {
+    font-size: 14px;
+    color: var(--blue);
+}
+
+.dropdown-icon {
+    font-size: 14px;
+    color: var(--grey);
+    transition: transform 0.3s ease;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--grey);
+    border-radius: 50%;
+    background-color: white;
+    /* Le chevron pointe initialement vers le haut */
+    transform: rotate(180deg); /* Rotation initiale pour pointer vers le bas */
+}
+
+.dropdown-icon.active {
+    transform: rotate(0deg); /* Rotation pour pointer vers le haut quand ouvert */
+}
+
+/* Topics Container Styles */
+.topics-container {
+    padding: 0 20px 15px 20px; /* Reduced left padding since we're using padding-left on topic-item */
+}
+
+.topic-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    cursor: pointer;
+    gap: 12px;
+    transition: all 0.3s ease;
+    position: relative;
+    padding-left: 32px;
+}
+
+.topic-number {
+    position: absolute;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    color: var(--grey);
+    border-radius: 50%;
+    font-size: 14px;
+    border: 1px solid var(--grey);
+}
+
+/* Topic title */
+.topic-title {
+    font-size: 14px;
+    color: var(--grey);
+    font-weight: normal;
+    transition: all 0.3s ease, margin-left 0.3s ease;
+}
+
+/* Validated topic title */
+.topic-item[data-state="validated"] .topic-title {
+    color: var(--blue);
+    font-weight: normal;
+}
+
+/* Play icon for hover */
+.play-icon-hover {
+    display: none;
+    position: absolute;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    border: 1px solid var(--tangerine);
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+}
+
+.topic-item:hover .topic-title {
+    color: var(--tangerine);
+    font-weight: 600;
+    margin-left: 8px; /* Ajout du décalage vers la droite */
+}
+
+.play-icon-hover i {
+    color: var(--tangerine);
+    font-size: 9.17px;
+}
+
+/* Triangle play icon for the triangle style */
+.play-triangle {
+    width: 0;
+    height: 0;
+    border-top: 4.58px solid transparent;
+    border-bottom: 4.58px solid transparent;
+    border-left: 9.17px solid var(--tangerine);
+    margin-left: 2px; /* Center it a bit */
+}
+
+/* Hover states */
+.lesson-card.lesson-no-topics:hover {
+    border: 1px solid var(--tangerine);
+}
+
+.lesson-card.lesson-no-topics:hover .lesson-title-container {
+    gap: 20px;
+}
+
+.lesson-card.lesson-no-topics:hover .lesson-title {
+    color: var(--tangerine);
+    font-weight: 600;
+}
+
+.lesson-card.lesson-no-topics[data-state="default"]:hover::before,
+.lesson-card.lesson-no-topics[data-state="inactive"]:hover::before {
+    content: "";
+    position: absolute;
+    left: 20px;
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    border: 1px solid var(--tangerine);
+    border-radius: 50%;
+}
+
+.lesson-card.lesson-no-topics[data-state="default"]:hover::after,
+.lesson-card.lesson-no-topics[data-state="inactive"]:hover::after {
+    content: "";
+    position: absolute;
+    left: 25px;
+    width: 0;
+    height: 0;
+    border-top: 4.58px solid transparent;
+    border-bottom: 4.58px solid transparent;
+    border-left: 9.17px solid var(--tangerine);
+}
+
+
+.topic-item:hover .topic-number {
+    display: none;
+}
+
+.topic-item:hover .play-icon-hover {
+    display: flex;
+}
+
+/* Animation */
+@keyframes textShift {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(12px);
+    }
+}
+
+/* Hover mode: open topics on hover */
+body[data-open-mode="hover"] .lesson-card.lesson-with-topics:hover .topics-container {
+  display: block;
+}
+body[data-open-mode="hover"] .lesson-card.lesson-with-topics:hover .dropdown-icon {
+  display: flex;
+  transform: rotate(0deg); /* Pointer vers le haut quand ouvert */
+}
+
+/* Mode toggle control styling */
+.mode-toggle {
+  margin: 1rem;
+  display: flex;
+  align-items: center;
+}
+.mode-toggle label {
+  font-size: 0.9rem;
+}
+.mode-toggle input {
+  margin-left: 0.5rem;
+  transform: scale(1.2);
+}

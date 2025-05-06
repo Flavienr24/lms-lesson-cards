@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMS Lesson Component</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body data-open-mode="click">
+    <div class="mode-toggle">
+      <label for="open-mode-toggle" id="open-mode-label">Click mode</label>
+      <input type="checkbox" id="open-mode-toggle" />
+    </div>
+    <div class="container">
+        <h1>LMS Lesson Component Demo</h1>
+        
+        <div class="lessons-container">
+            <!-- Lesson with topics - Validated -->
+            <div class="lesson-card lesson-with-topics" data-state="validated" data-has-topics="true">
+                <div class="lesson-header">
+                    <div class="lesson-title-container">
+                        <span class="lesson-title">Définitions et concepts fondamentaux</span>
+                    </div>
+                    <div class="lesson-right">
+                        <span class="topics-count">3 topics</span>
+                        <div class="lesson-check">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <div class="dropdown-icon" style="display: none;">
+                            <i class="fa-solid fa-chevron-up"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="topics-container" style="display: none;">
+                    <div class="topic-item" data-state="validated">
+                        <div class="topic-icon check">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <span class="topic-title">Principes fondamentaux</span>
+                        <div class="play-icon-hover">
+                            <div class="play-triangle"></div>
+                        </div>
+                    </div>
+                    <div class="topic-item" data-state="validated">
+                        <div class="topic-icon check">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <span class="topic-title">Histoire de la chimie</span>
+                        <div class="play-icon-hover">
+                            <div class="play-triangle"></div>
+                        </div>
+                    </div>
+                    <div class="topic-item" data-state="validated">
+                        <div class="topic-icon check">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <span class="topic-title">Domaines d'application</span>
+                        <div class="play-icon-hover">
+                            <div class="play-triangle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Lesson with multiple topics - Default, closed -->
+            <div class="lesson-card lesson-with-topics" data-state="default-open" data-has-topics="true">
+                <div class="lesson-header">
+                    <div class="lesson-title-container">
+                        <span class="lesson-title">Notation et unités en chimie</span>
+                    </div>
+                    <div class="lesson-right">
+                        <span class="topics-count">3 topics</span>
+                        <div class="dropdown-icon active">
+                            <i class="fa-solid fa-chevron-up"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="topics-container">
+                    <div class="topic-item" data-state="ready-to-play">
+                        <div class="topic-icon play-circle">
+                            <div class="play-triangle"></div>
+                        </div>
+                        <span class="topic-title">Notation scientifique</span>
+                        <div class="play-icon-hover">
+                            <div class="play-triangle"></div>
+                        </div>
+                    </div>
+                    <div class="topic-item" data-state="default">
+                        <div class="topic-number">2</div>
+                        <span class="topic-title">Système international d'unités</span>
+                        <div class="play-icon-hover">
+                            <div class="play-triangle"></div>
+                        </div>
+                    </div>
+                    <div class="topic-item" data-state="default">
+                        <div class="topic-number">3</div>
+                        <span class="topic-title">Conversions et calculs</span>
+                        <div class="play-icon-hover">
+                            <div class="play-triangle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Lesson with no topics - Default -->
+            <div class="lesson-card lesson-no-topics" data-state="default">
+                <div class="lesson-header">
+                    <div class="lesson-title-container">
+                        <span class="lesson-title">Introduction à la chimie</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
